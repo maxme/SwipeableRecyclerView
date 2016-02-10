@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,11 @@ public class MainActivity extends ActionBarActivity {
                                     mAdapter.notifyItemRemoved(position);
                                 }
                                 mAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissing(RecyclerView recyclerView, float position) {
+                                Log.d("FIXME", "X = " + position);
                             }
                         });
 

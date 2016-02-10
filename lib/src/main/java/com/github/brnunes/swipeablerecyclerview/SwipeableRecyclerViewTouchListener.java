@@ -277,6 +277,7 @@ public class SwipeableRecyclerViewTouchListener implements RecyclerView.OnItemTo
                 }
 
                 if (mSwiping) {
+                    mSwipeListener.onDismissing(mRecyclerView, deltaX);
                     mDownView.setTranslationX(deltaX - mSwipingSlop);
                     mDownView.setAlpha(Math.max(0f, Math.min(mAlpha,
                             mAlpha * (1f - Math.abs(deltaX) / mViewWidth))));
@@ -387,6 +388,8 @@ public class SwipeableRecyclerViewTouchListener implements RecyclerView.OnItemTo
          *                               order for convenience.
          */
         void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions);
+
+        void onDismissing(RecyclerView recyclerView, float position);
     }
 
     class PendingDismissData implements Comparable<PendingDismissData> {
